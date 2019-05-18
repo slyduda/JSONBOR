@@ -1,4 +1,5 @@
 import lxml.etree as et
+from collections import OrderedDict
 
 PY_FILE_PATH = "data\\0000002488-18-000042-ex-101-ins---xbrl-instance-document.xml"
 CY_FILE_PATH = "data\\0000002488-19-000011-ex-101-ins---xbrl-instance-document.xml"
@@ -33,6 +34,37 @@ def parse_nsmap(NS_MAP, file):
     return et.ElementTree(root)
 
 
+def parse_period(text):
+    """XBRL docs contain a concatenated period of performance for each item. Use this to break string up.
+
+        Attr:
+            text(str): The initial part of the contextRef attribute.
+    """ 
+    period_dict = OrderedDict()
+    prefix = ""
+    year = ""
+    quarter = ""
+    start = ""
+
+    while text[0] is not "2":
+        prefix += text.pop(0)
+
+    while text[0] is not "Q":
+        year += text.pop(0)
+    #This will fail if there is a different concat
+    for t in range(2):
+        quarter += text.pop(0)
+
+    start = text
+
+    period_dict["prefix"] = prefix
+    period_dict["year"] = year
+    period_dict["quarter"] = quarter
+    period_dict["start"] = start
+
+    return period_dict
+    
+
 def create_dict(element):
     """Used to create an organized dict of all values necessary for key audit.
 
@@ -42,8 +74,12 @@ def create_dict(element):
     item_dict = {"period":"temp","amount":"temp","id":"temp","tags":[]}
     for name, value in sorted(element.items()):
         if name == "contextRef":
+            #Double check to see if other XBRL Docs use "." in their data
+            # Found one issue with AMD XBRL 10K should not happen
+            value = value.split(".")[0]
+            # End of additional code
             values = value.split("_")
-            item_dict['period'] = values.pop(0)
+            item_dict['period'] = parse_period(values.pop(0))
             while values:
                 pair = (values.pop(0), values.pop(0))
                 item_dict['tags'].append(pair)
@@ -81,8 +117,33 @@ for element in elements:
     CY_COMP_DICT.setdefault(element_tag,[])
     CY_COMP_DICT[element_tag].append(create_dict(element))
 
+tree = et.parse(PY_FILE_PATH)
+root = tree.getroot()
+name = 'us-gaap'
+elements = tree.xpath('/xbrli:xbrl/{}:*'.format(name), namespaces=root.nsmap)
+
 for element in elements:
     element_tag = remove_namespace(element.tag,name,root.nsmap)
-    CY_COMP_DICT.setdefault(element_tag,[])
+    temp = create_dict(element)
 
+    if element_tag in CY_COMP_DICT:
+        lookup = CY_COMP_DICT[element_tag]
+        
+        switch = True
+        print("Looking up " + element_tag)
+        for item in lookup:
+            if temp["period"] == item["period"]:
+                switch = False
+                if temp['amount'] == item['amount']:
+                    switch = True
+                    break
+
+        if not switch:
+            print("Error with value of ", str(temp['amount']))
+
+
+    # Need to find a way to reliably deal with contradictions. 
+    # 1) Tuple comparison
+    # 2) Tracking what values what values are new and what values failed to tie correctly.
+    
 print("End of File")
