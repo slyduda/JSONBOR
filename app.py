@@ -1,6 +1,6 @@
 import lxml.etree as et
 from collections import OrderedDict
-from utility.jsbon import JSBON
+from utility.jsbron import jsbron
 import json
 
 PY_FILE_PATH = "data\\0000002488-18-000042-ex-101-ins---xbrl-instance-document.xml"
@@ -110,14 +110,14 @@ def remove_namespace(tag, name, ns_dict):
 CY_COMP_DICT = {}
 PY_COMP_DICT = {}
 
-jsbon = JSBON()
-jsbon.parse_XML(CY_FILE_PATH)
+jsbron = jsbron()
+jsbron.parse_XML(CY_FILE_PATH)
 
 def writeToJSONFile(path, fileName, data):
     filePathNameWExt = './' + path + '/' + fileName + '.json'
     with open(filePathNameWExt, 'w') as fp:
         fp.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 
-writeToJSONFile('','JSBON', jsbon.instance)
+writeToJSONFile('','jsbron', jsbron.instance)
 
 print("End of File")
