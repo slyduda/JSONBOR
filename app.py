@@ -1,5 +1,7 @@
 import lxml.etree as et
 from collections import OrderedDict
+from utility.jsbon import JSBON
+import json
 
 PY_FILE_PATH = "data\\0000002488-18-000042-ex-101-ins---xbrl-instance-document.xml"
 CY_FILE_PATH = "data\\0000002488-19-000011-ex-101-ins---xbrl-instance-document.xml"
@@ -107,43 +109,15 @@ def remove_namespace(tag, name, ns_dict):
 # Specifically for XBRL files with events in attributes. Not including this would result in blank namespaces.
 CY_COMP_DICT = {}
 PY_COMP_DICT = {}
-tree = et.parse(CY_FILE_PATH)
-root = tree.getroot()
-name = 'us-gaap'
-elements = tree.xpath('/xbrli:xbrl/{}:*'.format(name), namespaces=root.nsmap)
 
-for element in elements:
-    element_tag = remove_namespace(element.tag,name,root.nsmap)
-    CY_COMP_DICT.setdefault(element_tag,[])
-    CY_COMP_DICT[element_tag].append(create_dict(element))
+jsbon = JSBON()
+jsbon.parse_XML(CY_FILE_PATH)
 
-tree = et.parse(PY_FILE_PATH)
-root = tree.getroot()
-name = 'us-gaap'
-elements = tree.xpath('/xbrli:xbrl/{}:*'.format(name), namespaces=root.nsmap)
+def writeToJSONFile(path, fileName, data):
+    filePathNameWExt = './' + path + '/' + fileName + '.json'
+    with open(filePathNameWExt, 'w') as fp:
+        fp.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 
-for element in elements:
-    element_tag = remove_namespace(element.tag,name,root.nsmap)
-    temp = create_dict(element)
+writeToJSONFile('','JSBON', jsbon.instance)
 
-    if element_tag in CY_COMP_DICT:
-        lookup = CY_COMP_DICT[element_tag]
-        
-        switch = True
-        print("Looking up " + element_tag)
-        for item in lookup:
-            if temp["period"] == item["period"]:
-                switch = False
-                if temp['amount'] == item['amount']:
-                    switch = True
-                    break
-
-        if not switch:
-            print("Error with value of ", str(temp['amount']))
-
-
-    # Need to find a way to reliably deal with contradictions. 
-    # 1) Tuple comparison
-    # 2) Tracking what values what values are new and what values failed to tie correctly.
-    
 print("End of File")
