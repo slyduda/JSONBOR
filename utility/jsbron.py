@@ -1,4 +1,5 @@
 import lxml.etree as et
+import xmlschema
 
 class jsbron():
     def __init__(self):
@@ -9,9 +10,14 @@ class jsbron():
         self.taxonomy_label = {}
         self.taxonomy_presentation = {} 
 
-    def convert_to_text(self, xml_file):
-        tree = et.parse(xml_file)
-        string = et.tostring(tree, encoding='utf-8').decode('utf-8')
+    @staticmethod
+    def convert_to_text(xml_file, schema=False):
+        if schema:
+            tree = xmlschema.XMLResource(xml_file)
+            string = tree.tostring(indent='  ', spaces_for_tab=2)
+        else:
+            tree = et.parse(xml_file)
+            string = et.tostring(tree, encoding='utf-8').decode('utf-8')
         return string
 
 
@@ -29,10 +35,10 @@ class jsbron():
         """
 
         if instance:
-            result = self.parse_XML(self.convert_to_text(instance), delimiter)
+            result = self.parse_XML(self.convert_to_text(instance),delimiter)
             self.instance = result
         if schema:
-            result = self.parse_XML(self.convert_to_text(schema),delimiter)
+            result = self.parse_XML(self.convert_to_text(schema, schema=True),delimiter)
             self.taxonomy_schema = result
         if calculation:
             result = self.parse_XML(self.convert_to_text(calculation),delimiter)

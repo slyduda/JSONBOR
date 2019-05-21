@@ -1,3 +1,15 @@
+import os
+import json
+
+def writeToJSONFile(path, fileName, data):
+    path =   '.\\' + path + '\\'
+    if not os.path.exists(path):
+        os.makedirs(path)
+    filePathNameWExt = path + fileName + '.json'
+    with open(filePathNameWExt, 'w') as fp:
+        fp.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+
+
 def truncateFilePath(string, suffix=None, parts=1):
     """Function that takes a file that was loaded already and truncates it to make a sub folder with a child folder specified.
 
