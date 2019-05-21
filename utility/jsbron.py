@@ -3,25 +3,52 @@ import lxml.etree as et
 class jsbron():
     def __init__(self):
         self.instance = {}
-        self.taxonomy_calc = {}
-        self.taxonomy_def = {}
-        self.taxonomy_lab = {}
-        self.taxonomy_pres = {} 
+        self.taxonomy_schema = {}
+        self.taxonomy_calculation = {}
+        self.taxonomy_definition = {}
+        self.taxonomy_label = {}
+        self.taxonomy_presentation = {} 
 
-    def convert_to_jsbron(self, xml_file):
-        temp = {}
-
+    def convert_to_text(self, xml_file):
         tree = et.parse(xml_file)
         string = et.tostring(tree, encoding='utf-8').decode('utf-8')
         return string
 
 
-    def parse_XML(self, xml_string):
-        """Used to parse through XML and write a jsbron obj.
+    def convert_XML(self, instance=None, schema=None, calculation=None, definition=None, label=None, presentation=None):
+        """Used to store pieces of xml as a jsbron obj.
 
             Attr:
-                xml_string(str): XML file location.
+                instance(str): XML file location for the instance.
+                schema(str): XML file location for the taxonomy schema.
+                calculation(str): XML file location for the taxonomy calculations.
+                definition(str): XML file location for the taxonomy definition.
+                label(str): XML file location for the taxonomy label.
+                presentation(str): XML file location for the taxonomy presentation.
         """
+
+        if instance:
+            result = self.parse_XML(self.convert_to_text(instance))
+            self.instance = result
+        if schema:
+            result = self.parse_XML(self.convert_to_text(schema))
+            self.taxonomy_schema = result
+        if calculation:
+            result = self.parse_XML(self.convert_to_text(calculation))
+            self.taxonomy_calculation = result
+        if definition:
+            result = self.parse_XML(self.convert_to_text(definition))
+            self.taxonomy_definition = result
+        if label:
+            result = self.parse_XML(self.convert_to_text(label))
+            self.taxonomy_label = result
+        if presentation:
+            result = self.parse_XML(self.convert_to_text(presentation))
+            self.taxonomy_presentation = result
+
+
+    @staticmethod
+    def parse_XML(string):
 
         location = {0:{}, 1:{}, 2:{}, 3:{}, 4:{}, 5:{}, 6:{}, 7:{}, 8:{}, 9:{}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}}
         loc_ref = {0:{}, 1:{}, 2:{}, 3:{}, 4:{}, 5:{}, 6:{}, 7:{}, 8:{}, 9:{}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}}
@@ -84,33 +111,14 @@ class jsbron():
                 print("critical error need to pick one.")
             return wrapper
         
-        
-        def determine_location(tag_spacing, tab_current, namespace=False, tag=False):
-            """Used to find the current location in the dict to place the generated structure.
 
-                Attr:
-                    tag_spacing(int): The amount of tab delimiters in the last line.
-                    tab_previos(int): The amount of tab delimiters in the current line.
-            """
-            global location, current_location
-            
-            addition = 0
-
-            if tag:
-                addition = 1
-
-            position = tab_current + addition
-            return position
-
-        tree = et.parse(xml_string)
+        tree = et.parse(string)
         string = et.tostring(tree, encoding='utf-8').decode('utf-8')
 
         text = ""
         temp_prop_value = ""
 
-        tab_previous = 0
         tab_current = 0
-
         obj_pos = 0
         
         new_line = False
@@ -130,7 +138,6 @@ class jsbron():
             if text == "\n":
                 new_line = True
                 inside_value = False
-                tab_previous = int(tab_current)
                 prop_spacing = 0
                 tab_current = 0
                 text = ""
@@ -144,6 +151,12 @@ class jsbron():
 
             #Check to see if the tag is a comment.
             if text == "!--" and inside_tag:
+                inside_tag = False
+                inside_tag_name = False
+                inside_comment = True
+                continue
+
+            if text == "?" and inside_tag:
                 inside_tag = False
                 inside_tag_name = False
                 inside_comment = True
@@ -326,5 +339,5 @@ class jsbron():
                 temp_prop_value = ""
                 text = ""
                 continue
-        
-        self.instance = location[0]
+
+        return location[0]
