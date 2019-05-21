@@ -110,10 +110,7 @@ class jsbron():
             else:
                 print("critical error need to pick one.")
             return wrapper
-        
 
-        tree = et.parse(string)
-        string = et.tostring(tree, encoding='utf-8').decode('utf-8')
 
         text = ""
         temp_prop_value = ""
