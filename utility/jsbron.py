@@ -15,7 +15,7 @@ class jsbron():
         return string
 
 
-    def convert_XML(self, instance=None, schema=None, calculation=None, definition=None, label=None, presentation=None):
+    def convert_XML(self, instance=None, schema=None, calculation=None, definition=None, label=None, presentation=None, delimiter="\t"):
         """Used to store pieces of xml as a jsbron obj.
 
             Attr:
@@ -25,30 +25,31 @@ class jsbron():
                 definition(str): XML file location for the taxonomy definition.
                 label(str): XML file location for the taxonomy label.
                 presentation(str): XML file location for the taxonomy presentation.
+                delimiters
         """
 
         if instance:
-            result = self.parse_XML(self.convert_to_text(instance))
+            result = self.parse_XML(self.convert_to_text(instance), delimiter)
             self.instance = result
         if schema:
-            result = self.parse_XML(self.convert_to_text(schema))
+            result = self.parse_XML(self.convert_to_text(schema),delimiter)
             self.taxonomy_schema = result
         if calculation:
-            result = self.parse_XML(self.convert_to_text(calculation))
+            result = self.parse_XML(self.convert_to_text(calculation),delimiter)
             self.taxonomy_calculation = result
         if definition:
-            result = self.parse_XML(self.convert_to_text(definition))
+            result = self.parse_XML(self.convert_to_text(definition),delimiter)
             self.taxonomy_definition = result
         if label:
-            result = self.parse_XML(self.convert_to_text(label))
+            result = self.parse_XML(self.convert_to_text(label),delimiter)
             self.taxonomy_label = result
         if presentation:
-            result = self.parse_XML(self.convert_to_text(presentation))
+            result = self.parse_XML(self.convert_to_text(presentation),delimiter)
             self.taxonomy_presentation = result
 
 
     @staticmethod
-    def parse_XML(string):
+    def parse_XML(string, delimiter="\t"):
 
         location = {0:{}, 1:{}, 2:{}, 3:{}, 4:{}, 5:{}, 6:{}, 7:{}, 8:{}, 9:{}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}}
         loc_ref = {0:{}, 1:{}, 2:{}, 3:{}, 4:{}, 5:{}, 6:{}, 7:{}, 8:{}, 9:{}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{}, 17:{}, 18:{}, 19:{}}
@@ -140,11 +141,12 @@ class jsbron():
                 text = ""
                 continue
 
-            #Check to see if new item is a child or in line.
-            if text == "\t":
-                tab_current += 1
-                text = ""
-                continue
+            #Check for spacing.
+            if new_line:
+                if text == delimiter or text == '\t':
+                    tab_current += 1
+                    text = ""
+                    continue
 
             #Check to see if the tag is a comment.
             if text == "!--" and inside_tag:

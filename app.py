@@ -11,7 +11,7 @@ LABEL = "data\\fb\\2019\\10-K\\fb-20181231_lab.xml"
 PRESENTATION = "data\\fb\\2019\\10-K\\fb-20181231_pre.xml"
 
 jsbron = jsbron()
-jsbron.convert_XML(calculation=CALCULATION, definition=DEFINITION, label=LABEL, presentation=PRESENTATION)
+jsbron.convert_XML(calculation=CALCULATION, definition=DEFINITION, label=LABEL, presentation=PRESENTATION, delimiter="  ")
 
 def writeToJSONFile(path, fileName, data):
     filePathNameWExt = './' + path + '/' + fileName + '.json'
