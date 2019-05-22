@@ -9,6 +9,13 @@ class jsbron():
         self.taxonomy_definition = {}
         self.taxonomy_label = {}
         self.taxonomy_presentation = {} 
+        self.dei = {}
+
+    def get_dei(self):
+        if self.instance:
+            dei = self.instance["xbrli"]["xbrl"][0]['dei']
+            for k,v in dei.items():
+                dei[k] = v["value"]
 
     @staticmethod
     def convert_to_text(xml_file, schema=False):

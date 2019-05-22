@@ -15,7 +15,7 @@ LABEL = "data\\fb\\2019\\10-K\\fb-20181231_lab.xml"
 PRESENTATION = "data\\fb\\2019\\10-K\\fb-20181231_pre.xml"
 
 jsbron = jsbron()
-jsbron.convert_XML(schema=SCHEMA, calculation=CALCULATION, definition=DEFINITION, label=LABEL, presentation=PRESENTATION, delimiter="  ")
+jsbron.convert_XML(instance=INSTANCE, schema=SCHEMA, calculation=CALCULATION, definition=DEFINITION, label=LABEL, presentation=PRESENTATION, delimiter="  ")
 
 writeToJSONFile(truncateFilePath(INSTANCE, suffix=SUFFIX),'fb_2019_instance', jsbron.instance)
 writeToJSONFile(truncateFilePath(CALCULATION, suffix=SUFFIX),'fb_2019_calculation', jsbron.taxonomy_calculation)
