@@ -15,7 +15,7 @@ LABEL = "data\\fb\\2019\\10-K\\fb-20181231_lab.xml"
 PRESENTATION = "data\\fb\\2019\\10-K\\fb-20181231_pre.xml"
 
 jsb_2018 = jsbron()
-jsb_2018.convert_XML(instance=INSTANCE, schema=SCHEMA, calculation=CALCULATION, definition=DEFINITION, label=LABEL, presentation=PRESENTATION, delimiter="  ")
+jsb_2018.convert_XML(instance=INSTANCE, schema=SCHEMA, calculation=CALCULATION, definition=DEFINITION, label=LABEL, tab_delimiter="  ")
 
 INSTANCE = "data\\fb\\2018\\10-K\\fb-20171231.xml"
 SCHEMA = "data\\fb\\2018\\10-K\\fb-20171231.xsd"
@@ -25,7 +25,10 @@ LABEL = "data\\fb\\2018\\10-K\\fb-20171231_lab.xml"
 PRESENTATION = "data\\fb\\2018\\10-K\\fb-20171231_pre.xml"
 
 jsb_2017 = jsbron()
-jsb_2017.convert_XML(instance=INSTANCE, schema=SCHEMA, calculation=CALCULATION, definition=DEFINITION, label=LABEL, presentation=PRESENTATION, delimiter="  ")
+jsb_2017.convert_XML(instance=INSTANCE, schema=SCHEMA, calculation=CALCULATION, definition=DEFINITION, label=LABEL, tab_delimiter="  ")
+
+jsb_2018.get_dei()
+comparison = jsb_2018.compare_financials(jsb_2017,us_gaap=True)
 
 writeToJSONFile(truncateFilePath(INSTANCE, suffix=SUFFIX),'fb_2017_instance', jsb_2017.instance)
 writeToJSONFile(truncateFilePath(CALCULATION, suffix=SUFFIX),'fb_2017_calculation', jsb_2017.taxonomy_calculation)
