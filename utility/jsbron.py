@@ -15,8 +15,63 @@ class jsbron():
         if self.instance:
             dei = self.instance["xbrli"]["xbrl"][0]['dei']
             for k,v in dei.items():
-                dei[k] = v["value"]
+                #Ignores second object within a tag. Good exmaple can be seen in FB 2019 10k
+                dei[k] = v[0]["value"]
+            self.dei = dei
 
+
+    def compare_financials(self, PY_jsbron, us_gaap=False, ifrs=False, ticker=None):
+        """Compare a current year JSBRON object with a PY object to identify all matching values with the same tags. Results in a Dictionary with two root values.
+
+            PY_jsbron(jsbron obj): Prior Year financials.
+            us_gaap(bool): If US GAAP related financials exists in the instance.
+            ifrs(bool): If IFRS related financials exists in the instance.
+            ticker(str): The ticker if self.dei is empty.
+        """
+
+        #need to compare us_gaap (could also be IFRS for foreign entity)
+        #need to compare dei ticker name namespace
+
+        if self.dei:
+            ticker = self.dei["TradingSymbol"]
+
+        if not self.instance or not PY_jsbron.instance:
+            print("An instance of either JSBRON Objects are missing")
+            return
+
+        search_dict = {}
+        PY_dict = {}
+        if us_gaap:
+            search_dict.update(self.instance["xbrli"]["xbrl"]["us_gaap"])
+            PY_dict.update(self.instance["xbrli"]["xbrl"]["us_gaap"])
+        if ifrs:
+            search_dict.update(self.instance["xbrli"]["xbrl"]["ifrs"])
+            PY_dict.update(self.instance["xbrli"]["xbrl"]["ifrs"])
+        if ticker:
+            search_dict.update(self.instance["xbrli"]["xbrl"][ticker])
+            PY_dict.update(self.instance["xbrli"]["xbrl"][ticker])
+        result = {"tied":{}, "errors":{}}
+        #each key will be associated a list of values
+        for key, values in search_dict.items():
+            for value in values:
+                match = False
+                PY_values = PY_dict[key]
+                possibilities = []
+                for PY_value in PY_values:
+                    if value["context"] == PY_value["context"] and value['value'] == PY_value['value']:
+                        match = True
+                    elif value['context'] == PY_value['context']:
+                        possibilities.append(PY_value)
+                if match:
+                    result["tied"].update(value)
+                else:
+                    possibilities = {"possibilities": possibilities}
+                    value.update(possibilities)
+                    result["errors"].update(value)
+
+        return result
+            
+            
     @staticmethod
     def convert_to_text(xml_file, schema=False):
         if schema:
@@ -76,7 +131,7 @@ class jsbron():
                 new_spacing.append(tag_spacing[n])
             dict_pos = sum(new_spacing)
 
-            for k,v in jsbron_dict.items():
+            for k, v in jsbron_dict.items():
                 if int(k) >= dict_pos:
                     jsbron_dict[k] = dict()
             
