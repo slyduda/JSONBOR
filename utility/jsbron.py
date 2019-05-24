@@ -42,33 +42,42 @@ class jsbron():
         search_dict = {}
         PY_dict = {}
         if us_gaap:
-            search_dict.update(self.instance["xbrli"]["xbrl"]["us_gaap"])
-            PY_dict.update(self.instance["xbrli"]["xbrl"]["us_gaap"])
+            search_dict.update(self.instance["xbrli"]["xbrl"][0]["us-gaap"])
+            PY_dict.update(PY_jsbron.instance["xbrli"]["xbrl"][0]["us-gaap"])
         if ifrs:
-            search_dict.update(self.instance["xbrli"]["xbrl"]["ifrs"])
-            PY_dict.update(self.instance["xbrli"]["xbrl"]["ifrs"])
+            search_dict.update(self.instance["xbrli"]["xbrl"][0]["ifrs"])
+            PY_dict.update(PY_jsbron.instance["xbrli"]["xbrl"][0]["ifrs"])
         if ticker:
-            search_dict.update(self.instance["xbrli"]["xbrl"][ticker])
-            PY_dict.update(self.instance["xbrli"]["xbrl"][ticker])
+            search_dict.update(self.instance["xbrli"]["xbrl"][0][ticker.lower()])
+            PY_dict.update(PY_jsbron.instance["xbrli"]["xbrl"][0][ticker.lower()])
         result = {"tied":{}, "errors":{}}
+        
         #each key will be associated a list of values
         for key, values in search_dict.items():
+            #Iterate through each item in each value
             for value in values:
                 match = False
-                PY_values = PY_dict[key]
-                possibilities = []
-                for PY_value in PY_values:
-                    if value["context"] == PY_value["context"] and value['value'] == PY_value['value']:
-                        match = True
-                    elif value['context'] == PY_value['context']:
-                        possibilities.append(PY_value)
-                if match:
-                    result["tied"].update(value)
-                else:
-                    possibilities = {"possibilities": possibilities}
-                    value.update(possibilities)
-                    result["errors"].update(value)
-
+                #Check if entry existed PY // Should by defualt since reporting is required
+                if key in PY_dict.keys():
+                    PY_values = PY_dict[key]
+                    possibilities = []
+                    #Iterate through the values in each value
+                    for PY_value in PY_values:
+                        #Check to see if keys exists. Might also need to check if an id key exists
+                        if 'value' in PY_value.keys() and 'contextRef' in PY_value.keys():
+                            if value["contextRef"] == PY_value["contextRef"] and value['value'] == PY_value['value']:
+                                match = True
+                                value.update({"tie": PY_value['id']})
+                            elif value['contextRef'] == PY_value['contextRef']:
+                                possibilities.append(PY_value)
+                    if match:
+                        result["tied"].update({key: []})
+                        result['tied'][key].append(value)
+                    else:
+                        potential_ties = {"possibilities": possibilities}
+                        value.update(potential_ties)
+                        result["errors"].update({key: []})
+                        result["errors"][key].append(value)
         return result
             
             
@@ -83,7 +92,7 @@ class jsbron():
         return string
 
 
-    def convert_XML(self, instance=None, schema=None, calculation=None, definition=None, label=None, presentation=None, delimiter="\t"):
+    def convert_XML(self, instance=None, schema=None, calculation=None, definition=None, label=None, presentation=None, tab_delimiter="\t"):
         """Used to store pieces of xml as a jsbron obj.
 
             Attr:
@@ -97,22 +106,22 @@ class jsbron():
         """
 
         if instance:
-            result = self.parse_XML(self.convert_to_text(instance),delimiter)
+            result = self.parse_XML(self.convert_to_text(instance), tab_delimiter)
             self.instance = result
         if schema:
-            result = self.parse_XML(self.convert_to_text(schema, schema=True),delimiter)
+            result = self.parse_XML(self.convert_to_text(schema, schema=True), tab_delimiter)
             self.taxonomy_schema = result
         if calculation:
-            result = self.parse_XML(self.convert_to_text(calculation),delimiter)
+            result = self.parse_XML(self.convert_to_text(calculation), tab_delimiter)
             self.taxonomy_calculation = result
         if definition:
-            result = self.parse_XML(self.convert_to_text(definition),delimiter)
+            result = self.parse_XML(self.convert_to_text(definition), tab_delimiter)
             self.taxonomy_definition = result
         if label:
-            result = self.parse_XML(self.convert_to_text(label),delimiter)
+            result = self.parse_XML(self.convert_to_text(label), tab_delimiter)
             self.taxonomy_label = result
         if presentation:
-            result = self.parse_XML(self.convert_to_text(presentation),delimiter)
+            result = self.parse_XML(self.convert_to_text(presentation), tab_delimiter)
             self.taxonomy_presentation = result
 
 

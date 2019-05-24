@@ -1,0 +1,749 @@
+{
+    "xsd": {
+        "schema": [
+            {
+                "attributeFormDefault": "unqualified",
+                "elementFormDefault": "qualified",
+                "targetNamespace": "http://www.facebook.com/20171231",
+                "xmlns": {
+                    "link": "http://www.xbrl.org/2003/linkbase",
+                    "xlink": "http://www.w3.org/1999/xlink",
+                    "xsd": "http://www.w3.org/2001/XMLSchema"
+                },
+                "xsd": {
+                    "annotation": [
+                        {
+                            "xsd": {
+                                "appinfo": [
+                                    {
+                                        "link": {
+                                            "linkbaseRef": [
+                                                {
+                                                    "xlink": {
+                                                        "arcrole": "http://www.w3.org/1999/xlink/properties/linkbase",
+                                                        "href": "fb-20171231_cal.xml",
+                                                        "role": "http://www.xbrl.org/2003/role/calculationLinkbaseRef",
+                                                        "type": "simple"
+                                                    }
+                                                },
+                                                {
+                                                    "xlink": {
+                                                        "arcrole": "http://www.w3.org/1999/xlink/properties/linkbase",
+                                                        "href": "fb-20171231_def.xml",
+                                                        "role": "http://www.xbrl.org/2003/role/definitionLinkbaseRef",
+                                                        "type": "simple"
+                                                    }
+                                                },
+                                                {
+                                                    "xlink": {
+                                                        "arcrole": "http://www.w3.org/1999/xlink/properties/linkbase",
+                                                        "href": "fb-20171231_lab.xml",
+                                                        "role": "http://www.xbrl.org/2003/role/labelLinkbaseRef",
+                                                        "type": "simple"
+                                                    }
+                                                },
+                                                {
+                                                    "xlink": {
+                                                        "arcrole": "http://www.w3.org/1999/xlink/properties/linkbase",
+                                                        "href": "fb-20171231_pre.xml",
+                                                        "role": "http://www.xbrl.org/2003/role/presentationLinkbaseRef",
+                                                        "type": "simple"
+                                                    }
+                                                }
+                                            ],
+                                            "roleType": [
+                                                {
+                                                    "id": "CashAndCashEquivalentsAndMarketableSecurities",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2104100 - Disclosure - Cash and Cash Equivalents, and Marketable Securities"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/CashAndCashEquivalentsAndMarketableSecurities"
+                                                },
+                                                {
+                                                    "id": "CashAndCashEquivalentsAndMarketableSecuritiesContractualMaturitiesOfDebtSecuritiesDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2404403 - Disclosure - Cash and Cash Equivalents, and Marketable Securities  - Contractual Maturities of Debt Securities (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/CashAndCashEquivalentsAndMarketableSecuritiesContractualMaturitiesOfDebtSecuritiesDetails"
+                                                },
+                                                {
+                                                    "id": "CashAndCashEquivalentsAndMarketableSecuritiesDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2404402 - Disclosure - Cash and Cash Equivalents, and Marketable Securities (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/CashAndCashEquivalentsAndMarketableSecuritiesDetails"
+                                                },
+                                                {
+                                                    "id": "CashAndCashEquivalentsAndMarketableSecuritiesTables",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2304301 - Disclosure - Cash and Cash Equivalents, and Marketable Securities (Tables)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/CashAndCashEquivalentsAndMarketableSecuritiesTables"
+                                                },
+                                                {
+                                                    "id": "CommitmentsAndContingencies",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2111100 - Disclosure - Commitments and Contingencies"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/CommitmentsAndContingencies"
+                                                },
+                                                {
+                                                    "id": "CommitmentsAndContingenciesDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2411402 - Disclosure - Commitments and Contingencies (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/CommitmentsAndContingenciesDetails"
+                                                },
+                                                {
+                                                    "id": "CommitmentsAndContingenciesTables",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2311301 - Disclosure - Commitments and Contingencies (Tables)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/CommitmentsAndContingenciesTables"
+                                                },
+                                                {
+                                                    "id": "ConsolidatedBalanceSheets",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "1001000 - Statement - CONSOLIDATED BALANCE SHEETS"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/ConsolidatedBalanceSheets"
+                                                },
+                                                {
+                                                    "id": "ConsolidatedBalanceSheetsParenthetical",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "1001501 - Statement - CONSOLIDATED BALANCE SHEETS (Parenthetical)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/ConsolidatedBalanceSheetsParenthetical"
+                                                },
+                                                {
+                                                    "id": "ConsolidatedStatementsOfCashFlows",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "1005000 - Statement - CONSOLIDATED STATEMENTS OF CASH FLOWS"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/ConsolidatedStatementsOfCashFlows"
+                                                },
+                                                {
+                                                    "id": "ConsolidatedStatementsOfComprehensiveIncome",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "1003000 - Statement - CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/ConsolidatedStatementsOfComprehensiveIncome"
+                                                },
+                                                {
+                                                    "id": "ConsolidatedStatementsOfIncome",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "1002000 - Statement - CONSOLIDATED STATEMENTS OF INCOME"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/ConsolidatedStatementsOfIncome"
+                                                },
+                                                {
+                                                    "id": "ConsolidatedStatementsOfStockholdersEquity",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "1004000 - Statement - CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/ConsolidatedStatementsOfStockholdersEquity"
+                                                },
+                                                {
+                                                    "id": "DocumentAndEntityInformation",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "0001000 - Document - Document and Entity Information"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/DocumentAndEntityInformation"
+                                                },
+                                                {
+                                                    "id": "EarningsPerShare",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2103100 - Disclosure - Earnings per Share"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/EarningsPerShare"
+                                                },
+                                                {
+                                                    "id": "EarningsPerShareDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2403402 - Disclosure - Earnings per Share (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/EarningsPerShareDetails"
+                                                },
+                                                {
+                                                    "id": "EarningsPerShareTables",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2303301 - Disclosure - Earnings per Share (Tables)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/EarningsPerShareTables"
+                                                },
+                                                {
+                                                    "id": "FairValueMeasurement",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2106100 - Disclosure - Fair Value Measurement"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/FairValueMeasurement"
+                                                },
+                                                {
+                                                    "id": "FairValueMeasurementDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2406402 - Disclosure - Fair Value Measurement (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/FairValueMeasurementDetails"
+                                                },
+                                                {
+                                                    "id": "FairValueMeasurementTables",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2306301 - Disclosure - Fair Value Measurement (Tables)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/FairValueMeasurementTables"
+                                                },
+                                                {
+                                                    "id": "GeographicalInformation",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2115100 - Disclosure - Geographical Information"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/GeographicalInformation"
+                                                },
+                                                {
+                                                    "id": "GeographicalInformationPropertyAndEquipmentDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2415403 - Disclosure - Geographical Information - Property and Equipment (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/GeographicalInformationPropertyAndEquipmentDetails"
+                                                },
+                                                {
+                                                    "id": "GeographicalInformationRevenueDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2415402 - Disclosure - Geographical Information - Revenue (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/GeographicalInformationRevenueDetails"
+                                                },
+                                                {
+                                                    "id": "GeographicalInformationTables",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2315301 - Disclosure - Geographical Information (Tables)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/GeographicalInformationTables"
+                                                },
+                                                {
+                                                    "id": "GoodwillAndIntangibleAssets",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2108100 - Disclosure - Goodwill and Intangible Assets"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/GoodwillAndIntangibleAssets"
+                                                },
+                                                {
+                                                    "id": "GoodwillAndIntangibleAssetsAmortizationExpenseDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2408404 - Disclosure - Goodwill and Intangible Assets  - Amortization Expense (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/GoodwillAndIntangibleAssetsAmortizationExpenseDetails"
+                                                },
+                                                {
+                                                    "id": "GoodwillAndIntangibleAssetsChangeInCarryingAmountDetails",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": "2408402 - Disclosure - Goodwill and Intangible Assets  - Change in Carrying Amount (Details)"
+                                                            }
+                                                        ],
+                                                        "usedOn": [
+                                                            {
+                                                                "value": "link:presentationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:calculationLink"
+                                                            },
+                                                            {
+                                                                "value": "link:definitionLink"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/GoodwillAndIntangibleAssetsChangeInCarryingAmountDetails"
+                                                },
+                                                {
+                                                    "id": "GoodwillAndIntangibleAssetsIntangibleAssetsDetail",
+                                                    "link": {
+                                                        "definition": [
+                                                            {
+                                                                "value": ""
+                                                            }
+                                                        ]
+                                                    },
+                                                    "roleURI": "http://www.facebook.com/role/GoodwillAndIntangibleAssetsIntangibleAssetsDetail"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "import": [
+                        {
+                            "namespace": "http://fasb.org/us-gaap/2017-01-31",
+                            "schemaLocation": "http://xbrl.fasb.org/us-gaap/2017/elts/us-gaap-2017-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://fasb.org/us-roles/2017-01-31",
+                            "schemaLocation": "http://xbrl.fasb.org/us-gaap/2017/elts/us-roles-2017-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://fasb.org/us-types/2017-01-31",
+                            "schemaLocation": "http://xbrl.fasb.org/us-gaap/2017/elts/us-types-2017-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://www.xbrl.org/2003/instance",
+                            "schemaLocation": "http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"
+                        },
+                        {
+                            "namespace": "http://www.xbrl.org/2003/linkbase",
+                            "schemaLocation": "http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+                        },
+                        {
+                            "namespace": "http://www.xbrl.org/2009/arcrole/fact-explanatoryFact",
+                            "schemaLocation": "http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd"
+                        },
+                        {
+                            "namespace": "http://www.xbrl.org/2009/role/negated",
+                            "schemaLocation": "http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd"
+                        },
+                        {
+                            "namespace": "http://www.xbrl.org/2009/role/net",
+                            "schemaLocation": "http://www.xbrl.org/lrr/role/net-2009-12-16.xsd"
+                        },
+                        {
+                            "namespace": "http://www.xbrl.org/dtr/type/non-numeric",
+                            "schemaLocation": "http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd"
+                        },
+                        {
+                            "namespace": "http://www.xbrl.org/dtr/type/numeric",
+                            "schemaLocation": "http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.org/2005/xbrldt",
+                            "schemaLocation": "http://www.xbrl.org/2005/xbrldt-2005.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.sec.gov/country/2017-01-31",
+                            "schemaLocation": "http://xbrl.sec.gov/country/2017/country-2017-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.sec.gov/currency/2017-01-31",
+                            "schemaLocation": "http://xbrl.sec.gov/currency/2017/currency-2017-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.sec.gov/dei/2014-01-31",
+                            "schemaLocation": "http://xbrl.sec.gov/dei/2014/dei-2014-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.sec.gov/exch/2017-01-31",
+                            "schemaLocation": "http://xbrl.sec.gov/exch/2017/exch-2017-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.sec.gov/invest/2013-01-31",
+                            "schemaLocation": "http://xbrl.sec.gov/invest/2013/invest-2013-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.sec.gov/naics/2017-01-31",
+                            "schemaLocation": "http://xbrl.sec.gov/naics/2017/naics-2017-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.sec.gov/sic/2011-01-31",
+                            "schemaLocation": "http://xbrl.sec.gov/sic/2011/sic-2011-01-31.xsd"
+                        },
+                        {
+                            "namespace": "http://xbrl.sec.gov/stpr/2011-01-31",
+                            "schemaLocation": "http://xbrl.sec.gov/stpr/2011/stpr-2011-01-31.xsd"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
